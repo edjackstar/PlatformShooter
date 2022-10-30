@@ -2,10 +2,9 @@
 
 public class InputService
 {
-    private Vector3 _inputVector;
+    private Vector3 _inputVector = Vector3.zero;
 
     public Vector3 MousePosition => Input.mousePosition;
-
 
     public Vector3 GetInputVector()
     {
@@ -13,11 +12,10 @@ public class InputService
         _inputVector.z = Input.GetAxis("Vertical");
 
         return _inputVector;
-
     }
 
-    // Input.GetAxis("Jump")
+    // Input.GetAxis("Jump");
 
-    public bool IsShootButton() 
+    public bool GetShootButton() 
         => Input.GetMouseButtonDown(0);
 }

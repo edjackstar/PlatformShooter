@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 
     private InputService _inputService;
     private Vector3 _verticalVelocity;
-    private bool _isGrounded;
 
     private const float Gravity = -9.81f;
 
@@ -23,19 +21,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 inputVector = GetInputVector();
         MovePlayer(inputVector * _speed);
 
-        ComputeGravity();
+        ApplyGravity();
         MovePlayer(_verticalVelocity);
     }
 
-    private void LateUpdate() 
-        => _isGrounded = CharacterController.isGrounded;
-
-    private void ComputeGravity()
+    private void ApplyGravity()
     {
-        if (_isGrounded == true)
+        if (CharacterController.isGrounded == true)
             _verticalVelocity.y = 0f;
         else
-            _verticalVelocity += Vector3.up * Gravity * Time.deltaTime;
+            _verticalVelocity.y += Gravity * Time.deltaTime;
     }
 
     private void MovePlayer(Vector3 movement) 
