@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.CodeBase.Infrastructure;
+using UnityEngine;
 
-public class InputService
+public class InputService : IService
 {
     private Vector3 _inputVector = Vector3.zero;
 
@@ -18,4 +19,9 @@ public class InputService
 
     public bool GetShootButton() 
         => Input.GetMouseButtonDown(0);
+}
+
+public interface ISingletonService<TSingletone>
+{
+    static TSingletone Instance { get; }
 }

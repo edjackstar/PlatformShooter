@@ -1,3 +1,4 @@
+using Assets.CodeBase.Infrastructure;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
@@ -7,11 +8,14 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform _gunPoint;
     [SerializeField] private LayerMask _ignoredLayers;
 
+    private AllServices _services = AllServices.Instance;
+
     private InputService _inputService;
 
     private void Start()
     {
-        _inputService = new InputService();
+        _inputService = _services.GetService<InputService>();
+
     }
 
     private void Update()
