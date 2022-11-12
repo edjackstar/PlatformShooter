@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 6752484529205231018}
   - component: {fileID: 283452181848471676}
   - component: {fileID: 6752484529205231013}
-  - component: {fileID: 283452181848471679}
+  - component: {fileID: 1433518241}
   m_Layer: 0
   m_Name: character1
   m_TagString: Untagged
@@ -2158,7 +2158,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6792829264697669820}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1800003, y: 0.2, z: -12.369999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2195,7 +2195,7 @@ Animator:
   m_GameObject: {fileID: 6792829264697669820}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
-  m_Controller: {fileID: 9100000, guid: 21d72e8b09071d546b0593313db925ae, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7672d5d65d4a34b4c9a5d182c848d8d8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2223,7 +2223,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &283452181848471679
+--- !u!114 &1433518241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6792829264697669820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 690b23494e741ac4fb2b37fe7331fffe, type: 3}
+  m_Script: {fileID: 11500000, guid: f1f8d2dacb77d524cae6049e08cb2afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6830422590690658641
