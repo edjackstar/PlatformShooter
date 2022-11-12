@@ -13,13 +13,16 @@ namespace Assets.CodeBase.Infrastructure
 
         public void Enter()
         {
-            CreateHero();
+            CreateHeroAndCamera();
+
         }
 
-        private void CreateHero()
+        private void CreateHeroAndCamera()
         {
             Vector3 initialHeroSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
-            _factoryHero.BuildHero(initialHeroSpawnPoint);
+            Transform cameraTarget = _factoryHero.BuildHero(initialHeroSpawnPoint).transform;
+
+            Camera.main.transform.GetComponent<CameraFollow>().SetTarget(cameraTarget);
         }
 
         public void Exit()
