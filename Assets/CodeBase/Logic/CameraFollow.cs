@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform Target;
     [SerializeField] private float _mouseSpeed;
+    [SerializeField] private LayerMask _ignoredLayers;
 
     public float RotationAngleX;
     public float RotationAngleY;
@@ -43,10 +44,23 @@ public class CameraFollow : MonoBehaviour
 
     private void FollowTarget()
     {
-        Quaternion rotation = Quaternion.Euler(RotationAngleX, RotationAngleY, 0f);
-        Vector3 position = rotation * new Vector3(0f, 0f, -Distance) + FollowingPointPosition();
+        Quaternion cameraRotation = Quaternion.Euler(RotationAngleX, RotationAngleY, 0f);
+        Vector3 playerHeadPos = FollowingPointPosition();
+        float calculatedDistance = CalculateDistance(cameraRotation, playerHeadPos);
 
-        transform.SetPositionAndRotation(position, rotation);
+        Vector3 position = cameraRotation * Vector3.back * calculatedDistance + playerHeadPos;
+
+        transform.SetPositionAndRotation(position, cameraRotation);
+    }
+
+    private float CalculateDistance(Quaternion rotation, Vector3 playerPos)
+    {
+        Vector3 cameraDirection = CalculateCameraDirection(rotation);
+        Ray cameraDistanceRay = new Ray(playerPos, cameraDirection - Target.position);
+
+        Physics.Raycast(cameraDistanceRay, out RaycastHit _hit, Distance, ~_ignoredLayers);
+
+        return Math.Clamp((playerPos - _hit.point).magnitude, 0f, Distance);
     }
 
     private Vector3 FollowingPointPosition()
@@ -56,6 +70,9 @@ public class CameraFollow : MonoBehaviour
 
         return position;
     }
+
+    private Vector3 CalculateCameraDirection(Quaternion rotation)
+        => rotation * Vector3.back * Distance + Target.position;
 
     public void SetTarget(Transform cameraTarget)
          => Target = cameraTarget;

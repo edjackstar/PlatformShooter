@@ -1490,6 +1490,8 @@ MonoBehaviour:
   _ignoredLayers:
     serializedVersion: 2
     m_Bits: 256
+  _shootingColdown: 0.1
+  _spreadRange: 20
 --- !u!1 &3788290850366772755
 GameObject:
   m_ObjectHideFlags: 0
